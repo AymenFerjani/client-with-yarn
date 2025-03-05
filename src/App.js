@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+//import Counter from "./Counter";
+//import MyDiv from "./MyDiv";
+import MyList from "./MyList";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.min.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Add from "./Add";
+import Edit from "./Edit";
+import Details from "./Details";
+import Page404 from "./Page404";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        gap: 10,
+        padding: 10,
+      }}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MyList />} />
+          <Route path="/add" element={<Add />} />
+          <Route path="/edit/:id" element={<Edit />} />
+          <Route path="/details/:id" element={<Details />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
